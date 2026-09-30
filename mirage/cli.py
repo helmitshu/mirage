@@ -5,6 +5,7 @@ import argparse
 import sys
 from datetime import date
 
+from . import __version__
 from .detector import analyze
 from .fetch import fetch_url
 from .llm import second_opinion
@@ -15,6 +16,7 @@ def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(
         prog="mirage", description="See through ghost jobs before you apply."
     )
+    p.add_argument("--version", action="version", version=f"%(prog)s {__version__}")
     src = p.add_mutually_exclusive_group(required=True)
     src.add_argument("--text", help="Posting text")
     src.add_argument("--file", help="File containing the posting text")
