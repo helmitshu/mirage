@@ -2,6 +2,8 @@
 
 Every job hunter knows the feeling. You find the perfect role, you tailor the resume, you wait two weeks, and nothing. The posting was never real. It was a ghost, reposted for months to farm resumes, or bait for a scam.
 
+Try it live: https://mirage-production-db25.up.railway.app
+
 Mirage reads a job posting the way a skeptic would. Paste the text or drop in the link, and seconds later you hold the verdict. A legitimacy score, every red flag named in plain English, and the exact reason behind the call. No more perfect applications sent into the void.
 
 ## How it works
