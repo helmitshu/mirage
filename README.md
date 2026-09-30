@@ -4,7 +4,7 @@ Every job hunter knows the feeling. You find the perfect role, you tailor the re
 
 Try it live: https://mirage-production-db25.up.railway.app
 
-Mirage reads a job posting the way a skeptic would. Paste the text or drop in the link, and seconds later you hold the verdict. A legitimacy score, every red flag named in plain English, and the exact reason behind the call. No more perfect applications sent into the void.
+Mirage reads a job posting the way a skeptic would. Paste the text, and seconds later you hold the verdict. A legitimacy score, every red flag named in plain English, and the exact reason behind the call. No more perfect applications sent into the void.
 
 ## How it works
 
@@ -59,9 +59,17 @@ Each signal below is one check in the rules engine.
 - **Buzzword stuffing** (low). Rockstars and ninjas wanted. Usually a sign nobody thought about the role.
 - **Vague pay** (low). Big talk about competitive packages, zero numbers anywhere.
 
+## Limitations
+
+Mirage analyzes text. It does not browse the web for you.
+
+The command line accepts a `--url` flag, and it works for ordinary pages. But the big job boards, Indeed and LinkedIn first among them, block automated readers outright. No header trick or reader proxy gets through reliably. That is their bot protection doing its job, not a bug in Mirage.
+
+For that reason the live demo is text only. Copy the posting, paste it in, and the analysis is identical. A link that cannot be fetched is not a failed analysis, it is a site refusing to be read, and pasting the text sidesteps it completely.
+
 ## Examples
 
-The `examples/` folder holds three fictional postings, one clean, one ghost, one scam. Run Mirage on each and compare the reports.
+The `examples/` folder holds five fictional postings, two clean, one ghost, one scam, one vague. Run Mirage on each and compare the reports.
 
 ## A note of honesty
 

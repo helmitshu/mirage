@@ -1,0 +1,25 @@
+Northwind Analytics is hiring a Senior Backend Engineer for our Toronto office. Hybrid, two days a week onsite.
+
+About us
+We build metering and billing infrastructure for energy retailers. 120 people, founded 2016, profitable since 2020. Our stack is Python, Postgres, and Kafka on AWS. See https://northwind-analytics.example.com/about for the team and our engineering blog.
+
+The role
+You will own our usage ingestion pipeline, which processes about 40 million events a day. Recent projects include cutting pipeline latency from 90 seconds to under 10 and migrating our rating engine to a new pricing model.
+
+Responsibilities
+- Design and operate high throughput data pipelines in Python
+- Lead incident reviews and drive follow ups to completion
+- Mentor two intermediate engineers on the team
+- Participate in an on call rotation, one week in six, with compensation
+
+Requirements
+- Six plus years of backend engineering, three plus with Python
+- Production experience with Kafka or a similar streaming platform
+- Comfortable with Postgres query planning and index design
+- You communicate clearly in writing; most collaboration is async
+
+Compensation
+CAD 150,000 to 175,000 base depending on experience, plus equity and an annual bonus targeting 10 percent. Health and dental from day one, four weeks vacation.
+
+Apply
+Send your resume and a short note about a pipeline you have operated to jobs@northwind-analytics.example.com with the subject Senior Backend Engineer. We review every application and respond within ten business days.
