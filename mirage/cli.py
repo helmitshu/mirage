@@ -10,6 +10,7 @@ from .detector import analyze
 from .fetch import fetch_url
 from .llm import second_opinion
 from .report import render_json, render_markdown
+from .translator import translate
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -24,6 +25,11 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--posted", help="Posting date as YYYY-MM-DD")
     p.add_argument("--format", choices=["md", "json"], default="md")
     p.add_argument("--no-llm", action="store_true", help="Skip the Claude second opinion")
+    p.add_argument(
+        "--translate",
+        action="store_true",
+        help="Add the plain English translation of the posting",
+    )
     args = p.parse_args(argv)
 
     if args.text:
@@ -57,11 +63,14 @@ def main(argv: list[str] | None = None) -> int:
         note = second_opinion(text, analysis)
         if note:
             analysis.llm_note = note
+    translation = translate(text) if args.translate else None
 
     if args.format == "json":
-        print(render_json(analysis, source=source), end="")
+        print(render_json(analysis, source=source, translation=translation), end="")
     else:
-        print(render_markdown(analysis, source=source), end="")
+        print(
+            render_markdown(analysis, source=source, translation=translation), end=""
+        )
     return 0
 
 
