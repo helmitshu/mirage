@@ -8,7 +8,7 @@
  */
 "use strict";
 
-const API_BASE = "__MIRAGE_API_URL__"; // e.g. https://mirage-api-xxxx.up.railway.app
+const API_BASE = "https://blissful-imagination-production-ad37.up.railway.app"; // e.g. https://mirage-api-xxxx.up.railway.app
 const MIN_TEXT = 50;
 const DEBOUNCE_MS = 1200;
 
