@@ -12,7 +12,7 @@ Mirage runs two passes over a posting.
 
 The first pass is a rules engine. It checks for the classic tells. Requests for money, contact only through Telegram or WhatsApp, salaries that make no sense, no real company identity, pressure language, and postings so thin they say nothing at all. Every tell carries a weight, and the weights add up to a score from 0 to 100.
 
-The second pass is optional. Set an Anthropic API key and Mirage asks Claude for a second opinion, a short plain English read on the same posting. No key, no problem. The rules engine stands on its own.
+The second pass is optional. Set a Google API key and Mirage asks Gemini for a second opinion, a short plain English read on the same posting. Gemini is the default because its free tier keeps the product free at scale. A Claude key still works as a fallback. No key, no problem. The rules engine stands on its own.
 
 ## Quick start
 
@@ -32,7 +32,11 @@ python -m mirage --file posting.txt --posted 2026-06-01
 python -m mirage --file posting.txt --no-llm
 ```
 
-Set `ANTHROPIC_API_KEY` to enable the second opinion pass.
+Set `GOOGLE_API_KEY` (get one free at Google AI Studio) to enable the
+second opinion pass via Gemini. `ANTHROPIC_API_KEY` still works as a
+fallback. Force a provider with `MIRAGE_LLM_PROVIDER=gemini|claude|none`,
+and pick the Gemini model with `MIRAGE_GEMINI_MODEL` (default
+`gemini-2.5-flash`).
 
 ## The verdict
 
@@ -66,6 +70,21 @@ Mirage analyzes text. It does not browse the web for you.
 The command line accepts a `--url` flag, and it works for ordinary pages. But the big job boards, Indeed and LinkedIn first among them, block automated readers outright. No header trick or reader proxy gets through reliably. That is their bot protection doing its job, not a bug in Mirage.
 
 For that reason the live demo is text only. Copy the posting, paste it in, and the analysis is identical. A link that cannot be fetched is not a failed analysis, it is a site refusing to be read, and pasting the text sidesteps it completely.
+
+## Browser extension
+
+The extension kills copy-paste for good. It watches the job pages you
+already visit on LinkedIn Jobs and Indeed, reads the posting from your
+own browser (so no bot blocking), scores it through the API below, and
+stamps a small score badge on the page. Zero clicks. See `extension/`
+for setup and publishing notes.
+
+## Scoring API
+
+`api/` is a small FastAPI service that powers the extension. `POST
+/score` takes posting text and returns the score, verdict, and top
+signals. Rate limited per IP. Deploy it as its own Railway service
+with `GOOGLE_API_KEY` set, then point the extension at its URL.
 
 ## Examples
 
