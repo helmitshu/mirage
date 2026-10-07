@@ -1,0 +1,1 @@
+{"content_scripts":[{"js":["content.js"],"matches":["*://www.linkedin.com/jobs/*","*://*.indeed.com/*"],"run_at":"document_idle"}],"description":"Scores job postings as you browse. See through ghost jobs before you apply.","host_permissions":["__MIRAGE_API_ORIGIN__/*"],"manifest_version":3,"name":"Mirage, ghost job detector","permissions":[],"version":"0.1.0"}
